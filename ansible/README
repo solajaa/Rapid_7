@@ -1,0 +1,11 @@
+This playbook consists of two tasks:
+
+The first task installs the Rapid7 Insight Agent using the shell module.
+The second task uses the lineinfile module to edit the /etc/rapid7/insight-agent.conf file and set the api_key parameter to the value of the api_key variable. This variable is defined in the vars section and can be set to your actual API key.
+To use this playbook, you will need to specify the EC2 instances that you want to target in your Ansible inventory. You can do this by creating an ec2.ini file in your inventory directory, and adding the following contents:
+[ec2]
+ec2-1 ansible_host=1.2.3.4
+ec2-2 ansible_host=5.6.7.8
+
+TO RUN THE PLAYBOOK
+ansible-playbook -i inventory/ec2.ini --extra-vars "api_key=YOUR_API_KEY" main.yaml
